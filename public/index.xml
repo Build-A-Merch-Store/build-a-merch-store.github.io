@@ -2,18 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Merch Store</title>
-    <link>http://localhost:1313/build-a-merch-store/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Merch Store</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/build-a-merch-store/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Apr 2025 12:21:36 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up A Clean Architecture Solution</title>
-      <link>http://localhost:1313/build-a-merch-store/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/</link>
+      <link>http://localhost:1313/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/</link>
       <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/build-a-merch-store/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/</guid>
+      <guid>http://localhost:1313/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/</guid>
       <description>&lt;h2 id=&#34;-goal&#34;&gt;🎯 Goal &lt;a href=&#34;#-goal&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Create the foundation for a merchandise store application by setting up a Clean Architecture solution structure with the correct project dependencies, organizing all source code in a &lt;code&gt;src&lt;/code&gt; directory.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-prerequisites&#34;&gt;📋 Prerequisites &lt;a href=&#34;#-prerequisites&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Before beginning this exercise, you should:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Have .NET SDK 9.0 or newer installed&lt;/li&gt;&#xA;&lt;li&gt;Have VS Code with C# Dev Kit extension installed&lt;/li&gt;&#xA;&lt;li&gt;Have basic understanding of ASP.NET Core MVC&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;-learning-objectives&#34;&gt;📚 Learning Objectives &lt;a href=&#34;#-learning-objectives&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;By the end of this exercise, you will:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Example Page</title>
+      <link>http://localhost:1313/docs/2.-product-catalog/example-page/</link>
+      <pubDate>Sat, 12 Apr 2025 12:21:36 +0200</pubDate>
+      <guid>http://localhost:1313/docs/2.-product-catalog/example-page/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

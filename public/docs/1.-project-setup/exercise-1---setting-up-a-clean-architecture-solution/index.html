@@ -12,7 +12,7 @@
 
     
 
-<html lang="en-us"><head><script src="/build-a-merch-store/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=build-a-merch-store/livereload" data-no-instant defer></script>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
     <title>Setting Up A Clean Architecture Solution | Merch Store</title>
     <meta name="robots" content="noindex">
@@ -23,12 +23,12 @@
     <meta name="website" content="https://lotusdocs.dev" />
     <meta name="Version" content="v0.1.0" />
     
-    <link rel="icon" href="http://localhost:1313/build-a-merch-store/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="http://localhost:1313/build-a-merch-store/favicon.svg">
-<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/build-a-merch-store/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/build-a-merch-store/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/build-a-merch-store/favicon-16x16.png">
-<link rel="manifest" crossorigin="use-credentials" href="http://localhost:1313/build-a-merch-store/site.webmanifest">
+    <link rel="icon" href="http://localhost:1313/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="manifest" crossorigin="use-credentials" href="http://localhost:1313/site.webmanifest">
 <meta property="og:title" content="Setting Up A Clean Architecture Solution" />
 <meta property="og:description" content="🎯 Goal linkCreate the foundation for a merchandise store application by setting up a Clean Architecture solution structure with the correct project dependencies, organizing all source code in a src directory.
 📋 Prerequisites linkBefore beginning this exercise, you should:
@@ -39,10 +39,10 @@ Have basic understanding of ASP.NET Core MVC
 
 📚 Learning Objectives linkBy the end of this exercise, you will:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/build-a-merch-store/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/" /><meta property="og:image" content="http://localhost:1313/build-a-merch-store/opengraph/card-base-2_hu_a6f5d81c2d8e6c4c.png"/><meta property="article:section" content="docs" />
+<meta property="og:url" content="http://localhost:1313/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/" /><meta property="og:image" content="http://localhost:1313/opengraph/card-base-2_hu_1db7de273edc3d72.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-09-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2025-04-12T00:00:00+00:00" /><meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://localhost:1313/build-a-merch-store/opengraph/card-base-2_hu_a6f5d81c2d8e6c4c.png"/>
+<meta name="twitter:image" content="http://localhost:1313/opengraph/card-base-2_hu_1db7de273edc3d72.png"/>
 <meta name="twitter:title" content="Setting Up A Clean Architecture Solution"/>
 <meta name="twitter:description" content="🎯 Goal linkCreate the foundation for a merchandise store application by setting up a Clean Architecture solution structure with the correct project dependencies, organizing all source code in a src directory.
 📋 Prerequisites linkBefore beginning this exercise, you should:
@@ -60,13 +60,13 @@ Have basic understanding of ASP.NET Core MVC
     
     
             
-                <script type="text/javascript" src="http://localhost:1313/build-a-merch-store/docs/js/flexsearch.bundle.js"></script>
+                <script type="text/javascript" src="http://localhost:1313/docs/js/flexsearch.bundle.js"></script>
             
         
     
     
 
-    <link rel="stylesheet" href="/build-a-merch-store/docs/scss/style.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/docs/scss/style.css" crossorigin="anonymous">
     
     
     </head>
@@ -75,7 +75,7 @@ Have basic understanding of ASP.NET Core MVC
             <div class="page-wrapper toggled">
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-brand">
-        <a href='/build-a-merch-store/' aria-label="HomePage" alt="HomePage">
+        <a href='/' aria-label="HomePage" alt="HomePage">
             
                 <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
             
@@ -98,7 +98,27 @@ Have basic understanding of ASP.NET Core MVC
                                     
                                         
                                         
-                                            <li class="current "><a class="sidebar-nested-link" href="http://localhost:1313/build-a-merch-store/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/">Setting Up A Clean Architecture Solution</a></li>
+                                            <li class="current "><a class="sidebar-nested-link" href="http://localhost:1313/docs/1.-project-setup/exercise-1---setting-up-a-clean-architecture-solution/">Setting Up A Clean Architecture Solution</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown  ">
+                            <button class="btn">
+                                <i class="material-icons me-2">menu_book</i>
+                                Product Catalog
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="http://localhost:1313/docs/2.-product-catalog/example-page/">Example Page</a></li>
                                         
                                     
                                 </ul>
@@ -122,7 +142,7 @@ Have basic understanding of ASP.NET Core MVC
 <div id="top-header" class="top-header d-print-none">
     <div class="header-bar d-flex justify-content-between">
         <div class="d-flex align-items-center">
-            <a href='/build-a-merch-store/' class="logo-icon me-3" aria-label="HomePage" alt="HomePage">
+            <a href='/' class="logo-icon me-3" aria-label="HomePage" alt="HomePage">
                 <div class="small">
                     
                             <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
@@ -222,7 +242,7 @@ Have basic understanding of ASP.NET Core MVC
         
             
                 <li class="breadcrumb-item text-capitalize active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/build-a-merch-store/docs/">
+                    <a itemprop="item" href="/docs/">
                         <i class="material-icons size-20 align-text-bottom" itemprop="name">Home</i>
                     </a>
                     <meta itemprop="position" content='1' />
@@ -230,7 +250,7 @@ Have basic understanding of ASP.NET Core MVC
             
             
                 <li class="breadcrumb-item text-capitalize" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/build-a-merch-store/docs/1.-project-setup/">
+                    <a itemprop="item" href="/docs/1.-project-setup/">
                         <span itemprop="name">Project Setup</span>
                     </a>
                     <meta itemprop="position" content='2' />
@@ -671,6 +691,19 @@ mkdir -p src/MerchStore.Infrastructure/Services</code>
                                             </div>
                                             <div><hr class="doc-hr">
 <div id="doc-nav" class="d-print-none">
+
+	<div class="row flex-xl-nowrap flex-row-reverse">
+	<div class="col-sm-6 pt-2 doc-prev">
+		<a class="ms-auto" href="/docs/2.-product-catalog/example-page/">
+			<div class="card h-100 my-1 text-end">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">Example Page <i class="material-icons align-middle">navigate_next</i></p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
+	</div>
 </div></div>
                                         </div>
                                     </div>
@@ -717,10 +750,10 @@ mkdir -p src/MerchStore.Infrastructure/Services</code>
 
 
 
-    <script src="/build-a-merch-store/docs/js/bootstrap.js" defer></script>
+    <script src="/docs/js/bootstrap.js" defer></script>
 
 
-    <script type="text/javascript" src="http://localhost:1313/build-a-merch-store/docs/js/bundle.js" defer></script>
+    <script type="text/javascript" src="http://localhost:1313/docs/js/bundle.js" defer></script>
 
         
 
@@ -849,6 +882,20 @@ mkdir -p src/MerchStore.Infrastructure/Services</code>
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
     
@@ -858,7 +905,7 @@ mkdir -p src/MerchStore.Infrastructure/Services</code>
     index.add(
             {
                 id:  0 ,
-                href: "\/build-a-merch-store\/docs\/1.-project-setup\/",
+                href: "\/docs\/1.-project-setup\/",
                 title: "Project Setup",
                 description: "",
                 content: ""
@@ -867,7 +914,7 @@ mkdir -p src/MerchStore.Infrastructure/Services</code>
     index.add(
             {
                 id:  1 ,
-                href: "\/build-a-merch-store\/docs\/1.-project-setup\/exercise-1---setting-up-a-clean-architecture-solution\/",
+                href: "\/docs\/1.-project-setup\/exercise-1---setting-up-a-clean-architecture-solution\/",
                 title: "Setting Up A Clean Architecture Solution",
                 description: "🎯 Goal linkCreate the foundation for a merchandise store application by setting up a Clean Architecture solution structure with the correct project dependencies, organizing all source code in a src directory.\n📋 Prerequisites linkBefore beginning this exercise, you should:\nHave .NET SDK 9.0 or newer installed Have VS Code with C# Dev Kit extension installed Have basic understanding of ASP.NET Core MVC 📚 Learning Objectives linkBy the end of this exercise, you will:\n",
                 content: "🎯 Goal linkCreate the foundation for a merchandise store application by setting up a Clean Architecture solution structure with the correct project dependencies, organizing all source code in a src directory.\n📋 Prerequisites linkBefore beginning this exercise, you should:\nHave .NET SDK 9.0 or newer installed Have VS Code with C# Dev Kit extension installed Have basic understanding of ASP.NET Core MVC 📚 Learning Objectives linkBy the end of this exercise, you will:\nSet up a Clean Architecture solution structure from scratch Create projects for Domain, Application, Infrastructure, and Presentation layers Configure project references to enforce proper dependency flow Organize projects in a src directory for better code organization Verify the solution builds successfully 🔍 Why This Matters linkIn real-world applications, Clean Architecture is crucial because:\nIt enables separation of concerns, making the codebase more maintainable It’s an industry standard approach for building scalable enterprise applications It will be foundational for all future functionality we’ll build throughout this course It makes the application more testable and less coupled to external frameworks 📝 Step-by-Step Instructions linkStep 1: Create the Solution Structure link Open a terminal and navigate to where you want to create your project.\nCreate a new solution and set up the src directory:\n# Create solution dotnet new sln -n MerchStore # Create src directory mkdir -p src # Create a gitignore file for .Net dotnet new gitignore Create projects for each Clean Architecture layer in the src directory:\n# Domain Layer dotnet new classlib -o src/MerchStore.Domain # Application Layer dotnet new classlib -o src/MerchStore.Application # Infrastructure Layer dotnet new classlib -o src/MerchStore.Infrastructure # Presentation Layer (WebUI) dotnet new mvc -o src/MerchStore.WebUI Add all projects to the solution:\n# Add projects to solution dotnet sln add src/MerchStore.Domain/MerchStore.Domain.csproj dotnet sln add src/MerchStore.Application/MerchStore.Application.csproj dotnet sln add src/MerchStore.Infrastructure/MerchStore.Infrastructure.csproj dotnet sln add src/MerchStore.WebUI/MerchStore.WebUI.csproj 💡 Information\nsrc Directory: Separates source code from other solution artifacts like tests, docs, etc. Domain Layer: Contains enterprise/business logic and entities - the heart of your application Application Layer: Contains business rules specific to the application and orchestrates domain objects Infrastructure Layer: Implements interfaces defined in inner layers, contains database, external APIs WebUI: Acts as the presentation layer in Clean Architecture, handling user interactions ⚠️ Common Mistakes\nForgetting to organize projects in the src directory will make it harder to add test projects later Creating direct dependencies from inner to outer layers breaks Clean Architecture principles Having too many project references can lead to circular dependencies Step 2: Configure Project Dependencies link Set up project references according to Clean Architecture principles (dependencies always point inward):\n# Application depends on Domain dotnet add src/MerchStore.Application/MerchStore.Application.csproj reference src/MerchStore.Domain/MerchStore.Domain.csproj # Infrastructure depends on Application (which already references Domain) dotnet add src/MerchStore.Infrastructure/MerchStore.Infrastructure.csproj reference src/MerchStore.Application/MerchStore.Application.csproj # WebUI depends on Infrastructure and Application dotnet add src/MerchStore.WebUI/MerchStore.WebUI.csproj reference src/MerchStore.Infrastructure/MerchStore.Infrastructure.csproj dotnet add src/MerchStore.WebUI/MerchStore.WebUI.csproj reference src/MerchStore.Application/MerchStore.Application.csproj 💡 Information\nDependency Rule: This reference structure enforces the Dependency Rule of Clean Architecture Inner Layer Independence: Inner layers have no knowledge of outer layers Domain Purity: Domain has no dependencies on other project layers This approach ensures that business logic doesn’t depend on UI or database implementations Step 3: Set Up Basic Folder Structure link Create the base folder structure in each project:\n# Domain Layer folders mkdir -p src/MerchStore.Domain/Entities mkdir -p src/MerchStore.Domain/ValueObjects mkdir -p src/MerchStore.Domain/Interfaces mkdir -p src/MerchStore.Domain/Common # Application Layer folders - service-based approach mkdir -p src/MerchStore.Application/Common/Interfaces mkdir -p src/MerchStore.Application/Products/Services mkdir -p src/MerchStore.Application/DTOs # Infrastructure Layer folders mkdir -p src/MerchStore.Infrastructure/Persistence mkdir -p src/MerchStore.Infrastructure/Persistence/Repositories mkdir -p src/MerchStore.Infrastructure/Services 💡 Information\nEntities: Domain objects with identity and lifecycle Value Objects: Immutable objects defined by their attributes Repositories: Data access patterns that abstract the underlying data store Services: Contain business logic that doesn’t naturally fit in domain objects This folder structure promotes a good separation of concerns in your application Step 4: Remove the Example Class1.cs Files link When you create a class library, an example class Class1.cs is created. You can safely remove these files:\nfind . -name \"Class1.cs\" -type f -delete ⚠️ Common Mistakes\nLeaving unused template files can cause confusion for new developers Be careful not to delete other important files when running this command 🧪 Final Tests linkRun the Application and Validate Your Work link Build the entire solution to ensure all projects are correctly set up:\ndotnet build Run the WebUI project to confirm the application starts correctly:\ndotnet run --project src/MerchStore.WebUI Open a browser and navigate to:\nhttps://localhost: Verify the default ASP.NET Core template loads correctly.\n✅ Expected Results\nBuild succeeds without errors ASP.NET Core default page loads correctly in the browser The solution has the following structure inside the src directory: MerchStore.Domain (Class Library) MerchStore.Application (Class Library - references Domain) MerchStore.Infrastructure (Class Library - references Application) MerchStore.WebUI (ASP.NET Core MVC - references Infrastructure and Application) 🔧 Troubleshooting linkIf you encounter issues:\nCheck that your .NET SDK version is 9.0 or newer with dotnet --version Ensure all project references are correctly set up Verify that the folder paths are created correctly Make sure the WebUI project runs with the default template 📚 Further Reading link Clean Architecture by Robert C. Martin - The definitive guide ASP.NET Core Clean Architecture - Microsoft documentation Clean Architecture with .NET Core - Jason Taylor’s practical approach Done! 🎉 linkGreat job! You’ve successfully set up the foundation for a Clean Architecture solution with proper organization using a src directory. This structure separates your source code from other solution artifacts, making it easier to add test projects, documentation, and other resources later. 🚀\n"
@@ -876,7 +923,25 @@ mkdir -p src/MerchStore.Infrastructure/Services</code>
     index.add(
             {
                 id:  2 ,
-                href: "\/build-a-merch-store\/docs\/",
+                href: "\/docs\/2.-product-catalog\/",
+                title: "Product Catalog",
+                description: "",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  3 ,
+                href: "\/docs\/2.-product-catalog\/example-page\/",
+                title: "Example Page",
+                description: "",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  4 ,
+                href: "\/docs\/",
                 title: "Docs",
                 description: "",
                 content: ""
