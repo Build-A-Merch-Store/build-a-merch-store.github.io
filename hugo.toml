@@ -1,4 +1,4 @@
-baseURL = 'https://cloud-developer.educ8.se/build-a-merch-store/'
+baseURL = 'http://build-a-merch-store.educ8.se'
 languageCode = 'en-us'
 title = 'Merch Store'
 
