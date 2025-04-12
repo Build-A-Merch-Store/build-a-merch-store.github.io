@@ -1,0 +1,7 @@
+/public/
+/resources/
+node_modules/
+.DS_Store
+*.orig
+hugo_cache/ # If you use local caching
+*.log

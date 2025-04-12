@@ -1,4 +1,4 @@
-baseURL = 'http://build-a-merch-store.educ8.se'
+baseURL = 'https://build-a-merch-store.educ8.se'
 languageCode = 'en-us'
 title = 'Merch Store'
 
