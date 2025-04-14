@@ -1,5 +1,5 @@
 ---
-title: "Creating a Product Entity"
+title: "Create a Product Entity"
 date: "2025-04-12"
 lastmod: "2025-04-12"
 draft: false

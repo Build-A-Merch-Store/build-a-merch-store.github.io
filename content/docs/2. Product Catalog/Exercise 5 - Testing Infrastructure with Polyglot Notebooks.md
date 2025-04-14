@@ -1,5 +1,5 @@
 ---
-title: "Testing Infrastructure with Polyglot Notebooks"
+title: "Test Infrastructure with Polyglot Notebooks"
 date: "2025-04-14"
 lastmod: "2025-04-14"
 draft: false

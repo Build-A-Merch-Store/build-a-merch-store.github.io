@@ -1,5 +1,5 @@
 ---
-title: "Unit Testing the Domain Layer"
+title: "Unit Test the Domain Layer"
 date: "2025-04-12"
 lastmod: "2025-04-12"
 draft: false
