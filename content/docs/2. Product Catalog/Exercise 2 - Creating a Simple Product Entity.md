@@ -1,6 +1,6 @@
 ---
 title: "Creating a Product Entity"
-date: "2023-09-07"
+date: "2025-04-12"
 lastmod: "2025-04-12"
 draft: false
 weight: 201
