@@ -1,7 +1,7 @@
 ---
 title: "Adding API Key Authentication to Your Basic API"
 date: "2025-04-20"
-lastmod: "2025-04-20"
+lastmod: "2025-04-24"
 draft: false
 weight: 303
 toc: true
@@ -265,7 +265,84 @@ In real-world applications, API security is crucial because:
 > - Using method names that conflict with existing ASP.NET Core methods
 > - Not documenting extension methods properly with XML comments
 
-### Step 4: Configure API Keys in Application Settings
+### Step 4: Create Swagger Support for API Key Authentication
+
+**Introduction**: To make our API more developer-friendly, we'll configure Swagger to support API Key authentication. This allows developers to test the API directly from the Swagger UI.
+
+1. Create a Security Requirements Operation Filter class to apply API key requirements to Swagger operations:
+
+    > `src/MerchStore.WebUI/Infrastructure/SecurityRequirementsOperationFilter.cs`
+
+    ```csharp
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.OpenApi.Models;
+    using Swashbuckle.AspNetCore.SwaggerGen;
+    using System.Reflection;
+    using MerchStore.WebUI.Authentication.ApiKey;
+
+    namespace MerchStore.WebUI.Infrastructure;
+
+    /// <summary>
+    /// Operation filter to add security requirements for controller-based endpoints
+    /// </summary>
+    public class SecurityRequirementsOperationFilter : IOperationFilter
+    {
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
+        {
+            // Only add security requirements to controller-based endpoints
+            // This excludes minimal API endpoints
+            if (context.ApiDescription.ActionDescriptor.GetType().Name.Contains("ControllerActionDescriptor"))
+            {
+                // Check if the endpoint requires authorization
+                var methodInfo = context.MethodInfo;
+                var controllerType = methodInfo?.DeclaringType;
+                
+                if (methodInfo != null)
+                {
+                    var hasAuthorizeAttribute = methodInfo.GetCustomAttribute<AuthorizeAttribute>() != null
+                                             || controllerType?.GetCustomAttribute<AuthorizeAttribute>() != null;
+                    
+                    if (hasAuthorizeAttribute)
+                    {
+                        // Add API key security requirement
+                        operation.Security = new List<OpenApiSecurityRequirement>
+                        {
+                            new OpenApiSecurityRequirement
+                            {
+                                {
+                                    new OpenApiSecurityScheme
+                                    {
+                                        Reference = new OpenApiReference
+                                        {
+                                            Type = ReferenceType.SecurityScheme,
+                                            Id = ApiKeyAuthenticationDefaults.AuthenticationScheme
+                                        }
+                                    },
+                                    Array.Empty<string>()
+                                }
+                            }
+                        };
+                    }
+                }
+            }
+        }
+    }
+    ```
+
+> 💡 **Information**
+>
+> - **Operation Filter**: Enhances Swagger operations with additional metadata
+> - **Authorization Detection**: Checks controllers and actions for the `[Authorize]` attribute
+> - **Security Requirements**: Adds API Key security requirements to the Swagger UI
+> - **Cross-Cutting Concern**: Applies security requirements without modifying controller code
+>
+> ⚠️ **Common Mistakes**
+>
+> - Not checking both controller and action method for authorization attributes
+> - Applying security requirements to all endpoints regardless of their authorization needs
+> - Using inconsistent security scheme names
+
+### Step 5: Configure API Keys in Application Settings
 
 **Introduction**: For security and flexibility, we'll store the API key in application settings rather than hardcoding it. This allows for different keys in different environments without changing code.
 
@@ -320,11 +397,11 @@ In real-world applications, API security is crucial because:
 > - Not having different keys for different environments
 > - Not documenting the configuration requirements
 
-### Step 5: Register Authentication in Program.cs
+### Step 6: Register Authentication in Program.cs
 
-**Introduction**: Now we need to register our authentication scheme with the ASP.NET Core dependency injection system. This makes our authentication handler available to the application.
+**Introduction**: Now we need to register our authentication scheme with the ASP.NET Core dependency injection system and configure Swagger to support API Key authentication. This makes our authentication handler available to the application.
 
-1. Update the `Program.cs` file to register the API Key authentication:
+1. Update the `Program.cs` file to register the API Key authentication and configure Swagger:
 
     > `src/MerchStore.WebUI/Program.cs`
 
@@ -355,6 +432,44 @@ In real-world applications, API security is crucial because:
 
     // Add Infrastructure services - this includes DbContext, Repositories, etc.
     builder.Services.AddInfrastructure(builder.Configuration);
+
+    // Add Swagger for API documentation
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo 
+        { 
+            Title = "MerchStore API", 
+            Version = "v1",
+            Description = "API for MerchStore product catalog",
+            Contact = new OpenApiContact
+            {
+                Name = "MerchStore Support",
+                Email = "support@merchstore.example.com"
+            }
+        });
+
+        // Include XML comments if you've enabled XML documentation in your project
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        if (File.Exists(xmlPath))
+        {
+            options.IncludeXmlComments(xmlPath);
+        }
+        
+        // Add API Key authentication support to Swagger UI
+        options.AddSecurityDefinition(ApiKeyAuthenticationDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+        {
+            Description = "API Key Authentication. Enter your API key in the field below.",
+            Name = ApiKeyAuthenticationDefaults.HeaderName,
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = ApiKeyAuthenticationDefaults.AuthenticationScheme
+        });
+        
+        // Apply API key requirement only to controller-based endpoints
+        options.OperationFilter<SecurityRequirementsOperationFilter>();
+    });
 
     var app = builder.Build();
 
