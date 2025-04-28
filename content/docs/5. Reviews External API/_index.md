@@ -1,6 +1,6 @@
 ---
 toc: true
-title: "Reviews External API"
+title: "External Review API"
 weight: 500
 icon: "menu_book"
 date: "2025-04-28"
