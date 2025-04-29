@@ -17,6 +17,7 @@ Before beginning this exercise, you should:
 
 - Have an Azure subscription (a free trial account works fine)
 - Have the Azure CLI installed on your machine
+- Have the [Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp) installed
 - Have basic knowledge of C# and HTTP APIs
 - Have .NET 6 SDK or later installed
 - Have Visual Studio Code installed with the Azure Functions extension
@@ -179,7 +180,13 @@ In real-world development, creating mock external APIs is valuable because:
     func new --template "HTTP trigger" --name GetProductReviews
     ```
 
-4. Create a models file to define our review data structures. Create `Models.cs` in the project root:
+4. Add the project to the solution (run the command from the solution root directory):
+
+    ```bash
+    dotnet sln add infra/ReviewApiFunction/ReviewApiFunction.csproj
+    ```
+
+5. Create a models file to define our review data structures. Create `Models.cs` in the project root:
 
     ```csharp
     // Models.cs
@@ -231,7 +238,7 @@ In real-world development, creating mock external APIs is valuable because:
     }
     ```
 
-5. Update the `GetProductReviews.cs` file with our mock review generation logic:
+6. Update the `GetProductReviews.cs` file with our mock review generation logic:
 
     ```csharp
     using Microsoft.Azure.Functions.Worker;
